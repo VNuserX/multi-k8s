@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t vnuserx/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run vnuserx/react-test npm test -- --coverage
+
+#here we preaparing prodaction version of build asd then push to the dockerhub
+after_success:
+  - docker run -t vnuserx/multi-client ./client
+  - docker run -t vnuserx/multi-nginx ./nginx
+  - docker run -t vnuserx/multi-server ./server
+  - docker run -t vnuserx/multi-worker ./worker
+  # before attempt to push images to docker hub need to log in to CLI 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #take those images and push them to the docker hub
+  - docker push vnuserx/multi-client
+  - docker push vnuserx/multi-nginx
+  - docker push vnuserx/multi-server
+  - docker push vnuserx/multi-worker
