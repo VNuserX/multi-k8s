@@ -10,10 +10,10 @@ script:
 
 #here we preaparing prodaction version of build asd then push to the dockerhub
 after_success:
-  - docker run -t vnuserx/multi-client ./client
-  - docker run -t vnuserx/multi-nginx ./nginx
-  - docker run -t vnuserx/multi-server ./server
-  - docker run -t vnuserx/multi-worker ./worker
+  - docker build -t vnuserx/multi-client ./client
+  - docker build -t vnuserx/multi-nginx ./nginx
+  - docker build -t vnuserx/multi-server ./server
+  - docker build -t vnuserx/multi-worker ./worker
   # before attempt to push images to docker hub need to log in to CLI 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take those images and push them to the docker hub
