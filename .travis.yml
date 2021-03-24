@@ -6,7 +6,7 @@ before_install:
   - docker build -t vnuserx/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run vnuserx/react-test npm test -- --coverage
+  - docker run -e CI=true stephengrider/react-test npm test
 
 #here we preaparing prodaction version of build asd then push to the dockerhub
 after_success:
