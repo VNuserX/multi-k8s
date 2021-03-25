@@ -21,3 +21,17 @@ after_success:
   - docker push vnuserx/multi-nginx
   - docker push vnuserx/multi-server
   - docker push vnuserx/multi-worker
+
+#this is commented out due to we do not have AWS account to use in this tutorial
+
+#deploy:
+#  provider: elasticbeanstalk
+#  region: 'us-east-1'
+#  app: 'multi-docker'
+#  env: 'MultiDocker-env'
+#  bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
+#  bucket_path: 'docker-multi'
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key: $AWS_SECRET_KEY
