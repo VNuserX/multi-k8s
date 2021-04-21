@@ -17,10 +17,10 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React 3
+            Running on Kubernetes in Google Cloud!
           </a>
           <Link to="/">Home</Link>
-          <Link to="/otherpage">Other page update</Link>
+          <Link to="/otherpage">Kubernetes</Link>
         </header>
         <div>
           <Route exact path="/" component={Fib} />
