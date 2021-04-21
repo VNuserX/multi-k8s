@@ -8,6 +8,6 @@ docker push vnuserx/multi-client:$SHA
 docker push vnuserx/multi-server:$SHA
 docker push vnuserx/multi-worker:$SHA
 kubectl apply -f k8s
-kubectl set image deployments/server-deployment server=multi-server:$SHA
-kubectl set image deployments/client-deployment client=multi-client:$SHA
-kubectl set image deployments/worker-deployment worker=multi-worker:$SHA
+kubectl set image deployments/server-deployment server=vnuserx/multi-server:$SHA
+kubectl set image deployments/client-deployment client=vnuserx/multi-client:$SHA
+kubectl set image deployments/worker-deployment worker=vnuserx/multi-worker:$SHA
